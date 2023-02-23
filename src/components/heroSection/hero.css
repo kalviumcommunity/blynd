@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "poppins";
+}
+#hero{
+    height: 90vh;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(111, 148, 137, 0.37) 0%, #97AA95 71.35%, #6F9489 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* flex-wrap: wrap; */
+    
+}
+.hero-img{
+    /* height: 100px; */
+    width: 50%;
+}
+#hero-image{
+height: 80vh;
+/* width: 85%; */
+}
+#get-started{
+    background-color: #E7ACAC;
+    color: white;
+    border-style: none;
+    padding: 0.1rem 1.5rem;
+    /* height: 125%; */
+    width: 278px;
+    height: 56px;
+    border-radius: 30px;
+
+}
+.hero-text{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 27vw;
+    text-align: center;
+    padding-bottom: 100px;
+}
+#p1{
+    font-size: 12px;
+    font-weight: 300;
+}
+#p2{
+    font-size: 15px;
+}
+
+@media (max-width: 768px) {
+    #hero-image{
+        /* height: 30vh; */
+        height:30vh;
+        }
+        .hero-text{
+            
+           
+           
+           
+            width: 50%;
+            text-align: center;
+            padding-bottom: 100px;
+        }
+        .hero-text img{
+            width: 100%;
+        }
+        #hero{
+            flex-direction: column-reverse;
+        }
+
+
+}

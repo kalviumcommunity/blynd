@@ -1,0 +1,23 @@
+import React from 'react'
+import './hero.css'
+
+const Hero = () => {
+  return (
+    <>
+    <div id='hero'>
+    <div className="hero-img">
+        <img id='hero-image' src="/assets/hero-image-new.png" alt="" />
+    </div>
+    <div className="hero-text">
+        <img src="/assets/image 3.png" alt="" />
+        <p id='p1'>- “The Dating Website that's all about Real Connections”</p>
+        <p id='p2'>Experience the excitement of meeting someone new through blynd dates.</p>
+        <button id='get-started'>Get Started</button>
+    </div>
+   
+    </div>
+    </>
+  )
+}
+
+export default Hero

@@ -1,7 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './hero.css'
 
 const Hero = () => {
+  const navigate = useNavigate()
+
+  const navigateSignup = () => {
+    navigate('/signup');
+  }
+
   return (
     <>
     <div id='hero'>
@@ -12,7 +19,7 @@ const Hero = () => {
         <img src="/assets/image 3.png" alt="" />
         <p id='p1'>- “The Dating Website that's all about Real Connections”</p>
         <p id='p2'>Experience the excitement of meeting someone new through blynd dates.</p>
-        <button id='get-started'>Get Started</button>
+        <button id='get-started' onClick={navigateSignup}>Get Started</button>
     </div>
    
     </div>

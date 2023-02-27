@@ -13,6 +13,7 @@ const Footer = () => {
     <div>
       <MDBFooter className="bg-dark text-center text-white">
         <MDBContainer className="p-4 pb-0 justify-content-center">
+        <img src="/assets/" alt="" />
           <section className="mb-4">
             <MDBBtn
               outline

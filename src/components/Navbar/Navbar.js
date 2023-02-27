@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar = () => {
+
   const [showNavbar, setShowNavbar] = useState(false)
 
   const handleShowNavbar = () => {
@@ -26,16 +27,16 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
             </li> */}
             <li>
-              <NavLink to="/blog">Learn</NavLink>
+              <NavLink to="/learn">Learn</NavLink>
             </li>
             <li>
-              <NavLink to="/projects">Safety</NavLink>
+              <NavLink to="/safety">Safety</NavLink>
             </li>
             <li>
-              <NavLink to="/about">Support</NavLink>
+              <NavLink to="/support">Support</NavLink>
             </li>
             <li>
-              <NavLink to="/contact"><button id='signin'> Sign in</button></NavLink>
+              <NavLink to="/login"><button id='signin' > Sign in</button></NavLink>
             </li>
           </ul>
         </div>

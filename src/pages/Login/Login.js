@@ -1,11 +1,18 @@
 import React from 'react'
-import { TextField } from '@material-ui/core';
+import { styled, TextField } from '@material-ui/core';
 
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const InputField = styled(TextField) ({
+    '& label.Mui-focused' : {
+      color: '#E7ACAC'
+    }
+  })
+
   return (
     <>
         <div className="signup-page">
@@ -31,8 +38,8 @@ const Login = () => {
         /> */}
           {/* <Input variant='flushed' placeholder='Flushed' /> */}
           {/* <TextField id="standard-basic" label="Full Name" variant="standard" /> */}
-          <TextField id="standard-basic" label="Email" variant="standard" />
-          <TextField id="standard-basic" label="Password" variant="standard" />
+          <InputField id="standard-basic" label="Email" variant="standard" />
+          <InputField id="standard-basic" label="Password" variant="standard" />
         {/* <Input className="email" variant="flushed" placeholder="Email" />
         <Input
           className="password"

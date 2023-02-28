@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Interest = () => {
   const navigate = useNavigate();
   const [gender, setGender] = useState("");
-  const isFormValid = !!gender;
+  const isFormValid = gender;
 
 const handelSelect = (event)=>{
     setGender(event.target.value);

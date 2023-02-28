@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const GenderPage = () => {
   const navigate = useNavigate();
   const [gender, setGender] = useState("");
-  const isFormValid = !!gender;
+  const isFormValid = gender;
 
 const handelSelect = (event)=>{
     setGender(event.target.value);
@@ -46,7 +46,7 @@ const handelSelect = (event)=>{
     </div>
     </div>
     
-    <div className={`female-cont ${gender==="female" ? "femaleselected" : ""  }`} onClick={()=>setGender("female")}>
+    <div className={`female-cont ${gender==="female" ? "female-selected" : ""  }`} onClick={()=>setGender("female")}>
     <div className="select">
         <img src="/assets/select.svg" alt="" />
     </div>

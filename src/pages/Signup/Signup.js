@@ -1,12 +1,19 @@
 import React from 'react'
 import { Input } from '@chakra-ui/react'
-import { TextField } from '@material-ui/core';
+import { styled, TextField } from '@material-ui/core';
 
 import './Signup.css'
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const navigate = useNavigate();
+
+  const InputField = styled(TextField) ({
+    '& label.Mui-focused' : {
+      color: '#E7ACAC'
+    }
+  })
+
   return (
     <>
         <div className="signup-page">
@@ -31,9 +38,9 @@ const Signup = () => {
           placeholder="Full Name"
         /> */}
           {/* <Input variant='flushed' placeholder='Flushed' /> */}
-          <TextField id="standard-basic" label="Full Name" variant="standard" />
-          <TextField id="standard-basic" label="Email" variant="standard" />
-          <TextField id="standard-basic" label="Password" variant="standard" />
+          <InputField id="standard-basic" label="Full Name" variant="standard" />
+          <InputField id="standard-basic" label="Email" variant="standard" />
+          <InputField id="standard-basic" label="Password" variant="standard" />
         {/* <Input className="email" variant="flushed" placeholder="Email" />
         <Input
           className="password"

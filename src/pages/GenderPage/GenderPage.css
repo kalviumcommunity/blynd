@@ -161,10 +161,10 @@ height: 144px;
     border: 1px solid #E7ACAC;
  }
  .female-selected .gender-sign span{
-    background-color: #E7ACAC;
+    background-color: #E7ACAC ;
  }
  .female-selected .select{
-    visibility: visible;
+    visibility: visible ;
  }
  .select{
     width: 100%;

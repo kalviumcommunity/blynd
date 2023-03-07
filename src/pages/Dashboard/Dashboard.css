@@ -3,42 +3,22 @@
   margin: 0;
   padding: 0;
   font-family: "poppins";
+  -webkit-tap-highlight-color: transparent;
 }
 html {
   font-size: 62.5%;
-  overflow-x: hidden;
-  overflow-y: hidden;
 }
 .swipe {
   position: absolute;
 }
 
-.card {
-  position: relative;
-  background-color: #fff;
-  width: 80vw;
-  max-width: 26rem;
-  height: 30rem;
-  box-shadow: 0px 0px 6rem 0px rgba(0, 0, 0, 0.3);
-  border-radius: 2rem;
-  background-size: cover;
-  background-position: center;
+.overflow-hidden {
+  overflow: hidden;
 }
-
-/* .cardContent {
-  width: 100%;
-  height: 100%;
-} */
 
 .swipe:last-of-type {
 }
 
-.card h3 {
-  /* position: absolute; */
-  /* bottom: 0; */
-  /* margin: 1rem; */
-  color: #fff;
-}
 .dashboard-container {
   display: flex;
   justify-content: center;
@@ -48,8 +28,6 @@ html {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-
-/* main section */
 
 .main-section {
   width: 70vw;
@@ -100,9 +78,9 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 500px;
-  border-radius: 30px 0px 0px 30px;
+  width: 30rem;
+  height: 50rem;
+  border-radius: 3rem 0px 0px 3rem;
   background-size: cover;
   background-position: center;
 }
@@ -110,19 +88,19 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 500px;
+  width: 30rem;
+  height: 50rem;
   object-fit: cover;
-  border-radius: 30px 0px 0px 30px;
+  border-radius: 3rem 0px 0px 3rem;
 }
 .name-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 300px;
-  height: 500px;
+  width: 30rem;
+  height: 50rem;
   background: #fdf7f7;
-  border-radius: 0px 30px 30px 0px;
+  border-radius: 0px 3rem 3rem 0px;
 }
 .name {
   display: flex;
@@ -133,19 +111,19 @@ html {
 }
 .name h3 {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 2rem;
   line-height: 125%;
   text-align: center;
   color: #000000;
 }
 .name img {
-  width: 24.69px;
-  height: 24.69px;
+  width: 2.469rem;
+  height: 2.469rem;
 }
 .name p {
   font-style: normal;
   font-weight: 600;
-  font-size: 11px;
+  font-size: 1.1rem;
   line-height: 100%;
   color: #42a5f5;
 }
@@ -167,28 +145,26 @@ html {
 .report p {
   font-style: normal;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 1rem;
   line-height: 100%;
-  /* or 11px */
-
   color: #97aa95;
 }
 .report img {
-  width: 12px;
-  height: 12px;
+  width: 1.2rem;
+  height: 1.2rem;
 }
 .swipe-btns {
   position: fixed;
-  bottom: 93px;
+  bottom: 9.3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 17px;
+  gap: 1.7rem;
   cursor: pointer;
 }
 .left-swipe {
-  width: 73px;
-  height: 73px;
+  width: 7.3rem;
+  height: 7.3rem;
   border-radius: 50%;
   background: #ea4335;
   display: flex;
@@ -196,12 +172,12 @@ html {
   align-items: center;
 }
 .left-swipe img {
-  width: 36px;
-  height: 36px;
+  width: 3.6rem;
+  height: 3.6rem;
 }
 .undo-btn {
-  width: 55px;
-  height: 56px;
+  width: 5.5rem;
+  height: 5.6rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -210,12 +186,12 @@ html {
   border: 3px solid #e7acac;
 }
 .undo-btn img {
-  width: 24px;
-  height: 25px;
+  width: 2.4rem;
+  height: 2.5rem;
 }
 .right-swipe {
-  width: 73px;
-  height: 73px;
+  width: 7.3rem;
+  height: 7.3rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -223,14 +199,14 @@ html {
   background: #e7acac;
 }
 .right-swipe img {
-  width: 36px;
-  height: 36px;
+  width: 3.6rem;
+  height: 3.6rem;
 }
 
-.swipecard-container{
+.swipecard-container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 50rem;
 }

@@ -37,21 +37,12 @@ const Signup = () => {
                 <p id='or'>- OR -</p>
 
                 <div className="signup-input-container">
-                {/* <Input
-          className="fullName"
-          variant="flushed"
-          placeholder="Full Name"
-        /> */}
-          {/* <Input variant='flushed' placeholder='Flushed' /> */}
+               
+         
           <InputField id="standard-basic" label="Full Name" variant="standard" />
           <InputField id="standard-basic" label="Email" variant="standard" />
           <InputField id="standard-basic" label="Password" variant="standard" />
-        {/* <Input className="email" variant="flushed" placeholder="Email" />
-        <Input
-          className="password"
-          variant="flushed"
-          placeholder="Password"
-        /> */}
+
         </div>
         <button className='signup-btn' onClick={()=> navigate('/name')}>Signup</button>
         <div className="login-text">

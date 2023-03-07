@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Picture from "../../components/Picture/Picture";
 import "./UploadPicture.css";
 import SuccessModal from "../../components/SuccessModal/SuccessModal";
 
@@ -81,72 +80,50 @@ const UploadPicture = () => {
   const isFormValid5 = pictures5.length > 0 ? true : false;
   const isFormValid6 = pictures6.length > 0 ? true : false;
 
+  let countPictures = 0;
 
-    let countPictures = 0;
+  if (pictures.length > 0) {
+    countPictures++;
+  }
 
-if (pictures.length > 0) {
-  countPictures++;
-}
+  if (pictures2.length > 0) {
+    countPictures++;
+  }
 
-if (pictures2.length > 0) {
-  countPictures++;
-}
+  if (pictures3.length > 0) {
+    countPictures++;
+  }
 
-if (pictures3.length > 0) {
-  countPictures++;
-}
+  if (pictures4.length > 0) {
+    countPictures++;
+  }
 
-if (pictures4.length > 0) {
-  countPictures++;
-}
+  if (pictures5.length > 0) {
+    countPictures++;
+  }
+  if (pictures6.length > 0) {
+    countPictures++;
+  }
 
-if (pictures5.length > 0) {
-  countPictures++;
-}
-if (pictures6.length > 0) {
-  countPictures++;
-}
+  const isButtonValid = countPictures >= 3;
 
-const isButtonValid = countPictures>=3;
-
-const [showModal, setShowModal] = useState(false);
-
-//   const closeModal = () => {
-//     setIsOpen(false);
-//   }
-
-//   const openModal = () => {
-//     setIsOpen(true);
-//   }
-
-// const Modal = ()=>{
-  
-// }
-
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <div className="container-namePage">
-      {showModal && <SuccessModal/>}
+        {showModal && <SuccessModal />}
 
-      
-
-        <div
-          className="row1"
-          onClick={()=> navigate('/')}
-        >
+        <div className="row1" onClick={() => navigate("/")}>
           <img src="/assets/Back.png" alt="" />
         </div>
 
         <h2>Upload your photos</h2>
-        {/* <Picture/> */}
 
         <div className="image-container">
           <div className="col1">
             <div className="big-box">
-            
               <div className="picture-preview-enabled">
-
                 {pictures.map((picture, index) => (
                   <img key={index} src={picture} alt={`Picture ${index}`} />
                 ))}
@@ -347,7 +324,6 @@ const [showModal, setShowModal] = useState(false);
             </div>
           </div>
         </div>
-        {/* <Picture/> */}
 
         <div className="next-btn-cont">
           <button
@@ -355,7 +331,6 @@ const [showModal, setShowModal] = useState(false);
             disabled={!isButtonValid}
             onClick={() => {
               setShowModal(true);
-              // navigate("/gender");
             }}
           >
             <div
@@ -382,56 +357,3 @@ const [showModal, setShowModal] = useState(false);
 };
 
 export default UploadPicture;
-
-// import { useState, useRef } from "react";
-
-// function PictureForm({ onNext }) {
-//   const [pictures, setPictures] = useState([]);
-//   const fileInputRef = useRef();
-
-//   const handleSelect = (event) => {
-//     const file = event.target.files[0];
-//     const reader = new FileReader();
-//     reader.onloadend = () => {
-//       setPictures([...pictures, reader.result]);
-//     };
-//     reader.readAsDataURL(file);
-//   };
-
-//   const handleUploadClick = () => {
-//     fileInputRef.current.click();
-//   };
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log("Submitting form:", { pictures });
-//     onNext();
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div className="form-group">
-//         <button type="button" onClick={handleUploadClick}>
-//           Upload pictures
-//         </button>
-//         <input
-//           type="file"
-//           accept="image/*"
-//           ref={fileInputRef}
-//           style={{ display: "none" }}
-//           onChange={handleSelect}
-//         />
-//         <div className="picture-preview">
-//           {pictures.map((picture, index) => (
-//             <img key={index} src={picture} alt={`Picture ${index}`} />
-//           ))}
-//         </div>
-//       </div>
-//       <button type="submit" className="btn btn-primary">
-//         Next
-//       </button>
-//     </form>
-//   );
-// }
-
-// export default PictureForm;

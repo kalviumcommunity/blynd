@@ -17,7 +17,12 @@ const Signup = () => {
   return (
     <>
         <div className="signup-page">
+        
+        
             <div className="design">
+            <div className="row1" onClick={()=>{navigate('/')}}>
+          <img src="/assets/Back.png" alt="" />
+        </div>
                 <h1>Welcome to our blind dating website! </h1>
                 <img src="/assets/signup-illus.svg" alt="" />
                 <p>Welcome to our blind dating website! Join now to discover new connections and potentially find love.</p>

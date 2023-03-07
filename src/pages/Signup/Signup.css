@@ -5,6 +5,10 @@
   box-sizing: border-box;
   font-family: "Poppins", "sans";
 }
+html{
+  font-size: 62.5%;
+}
+
 .signup-page {
   background-color: #f8e8e6;
   width: 100vw;

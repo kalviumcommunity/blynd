@@ -6,6 +6,9 @@
     padding: 0;
     
 }
+html {
+  font-size: 62.5%;
+}
 .container {
   /* max-width: 1100px; */
   margin: auto;
@@ -23,15 +26,15 @@
     background-color: white;
     color: black;
     border-style: none;
-    padding: 0.1rem 1.5rem;
-    height: 1.5rem;
+    padding: 0.1rem 2.5rem;
+    height: 3.5rem;
     border-radius: 2rem;
 
 }
 
 
 .navbar {
-  height: 61.5px;
+  height: 6.15rem;
   background-color: #6F9489;
   position: relative;
   /* padding: 0 70px; */
@@ -67,7 +70,7 @@
   justify-content: space-between;
   list-style-type: none;
   margin: 0;
-  gap: 60px;
+  gap: 6.0rem;
   align-items: center;
 
 }
@@ -86,11 +89,10 @@
 }
 
 .nav-elements ul a {
-  font-size: 16px;
+  font-size: 1.2rem;
   font-weight: 400;
   color: #fff;
   text-decoration: none;
-  font-size:x-small;
 }
 
 .nav-elements ul a.active {
@@ -111,7 +113,7 @@
 
 @media (max-width: 768px) {
   .nav-elements ul li:not(:last-child) {
-    margin-right: 30px;
+    margin-right: 3.0rem;
   }
 }
 
@@ -124,16 +126,16 @@
   .nav-elements {
     position: absolute;
     right: 0;
-    top: 60px;
+    top: 6.0rem;
     background-color: #6F9489;
     width: 0px;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 6.0rem);
     transition: all 0.3s ease-in;
     overflow: hidden;
   }
 
   .nav-elements.active {
-    width: 270px;
+    width: 27.0rem;
   }
 
   .nav-elements ul {
@@ -143,6 +145,6 @@
 
   .nav-elements ul li {
     margin-right: unset;
-    margin-top: 22px;
+    margin-top: 2.2rem;
   }
 }

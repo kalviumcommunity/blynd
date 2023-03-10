@@ -36,7 +36,7 @@ const db = [
 
 const Dashboard = () => {
   const characters = db;
-  const [lastDirection, setLastDirection] = useState();
+  const [lastDirection, setLastDirection] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const currentIndexRef = useRef(currentIndex);
   const childRefs = useMemo(
@@ -59,7 +59,7 @@ const Dashboard = () => {
   };
 
   const outOfFrame = (name, idx) => {
-    console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current);
+
     currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
   };
   const swipe = async (dir) => {

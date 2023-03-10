@@ -17,7 +17,12 @@ const Signup = () => {
   return (
     <>
         <div className="signup-page">
+        
+        
             <div className="design">
+            <div className="row1" onClick={()=>{navigate('/')}}>
+          <img src="/assets/Back.png" alt="" />
+        </div>
                 <h1>Welcome to our blind dating website! </h1>
                 <img src="/assets/signup-illus.svg" alt="" />
                 <p>Welcome to our blind dating website! Join now to discover new connections and potentially find love.</p>
@@ -32,21 +37,12 @@ const Signup = () => {
                 <p id='or'>- OR -</p>
 
                 <div className="signup-input-container">
-                {/* <Input
-          className="fullName"
-          variant="flushed"
-          placeholder="Full Name"
-        /> */}
-          {/* <Input variant='flushed' placeholder='Flushed' /> */}
+               
+         
           <InputField id="standard-basic" label="Full Name" variant="standard" />
           <InputField id="standard-basic" label="Email" variant="standard" />
           <InputField id="standard-basic" label="Password" variant="standard" />
-        {/* <Input className="email" variant="flushed" placeholder="Email" />
-        <Input
-          className="password"
-          variant="flushed"
-          placeholder="Password"
-        /> */}
+
         </div>
         <button className='signup-btn' onClick={()=> navigate('/name')}>Signup</button>
         <div className="login-text">

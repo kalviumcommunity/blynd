@@ -1,9 +1,7 @@
 import React from "react";
 import Footer from "../Footer";
 import "./About.css";
-import TestimonialB from "../TestimonialB/TestimonialB"
-// import TestimonialScroll from "../TestimonialB/TestimonialB"
-
+import TestimonialB from "../TestimonialB/TestimonialB";
 
 const About = () => {
   return (
@@ -56,19 +54,21 @@ const About = () => {
         </div>
       </div>
       <hr className="line1" />
-       
+
       <div id="about-t">
-      <h2>What our users say</h2>
-      <p>Our users love BLYND because it's a refreshing change from traditional online dating. Check out what some of our users have to say about their blind dating experiences on BLYND.</p>
-     
-     {/* <div className="testi-parent"> */}
-     <TestimonialB/>
-         
-    {/* </div> */}
-        
+        <h2>What our users say</h2>
+        <p>
+          Our users love BLYND because it's a refreshing change from traditional
+          online dating. Check out what some of our users have to say about
+          their blind dating experiences on BLYND.
+        </p>
+
+        <TestimonialB />
+
+        {/* </div> */}
       </div>
-      
-      <Footer/>
+
+      <Footer />
     </>
   );
 };

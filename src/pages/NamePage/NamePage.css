@@ -22,6 +22,9 @@
   gap: 3rem;
   gap: 5rem;
 }
+#name-back{
+  visibility: hidden;
+}
 .row1 img {
   width: 5.4rem;
   height: 5.4rem;
@@ -102,7 +105,7 @@ input:focus {
   border-radius: 1rem;
 }
 .progress {
-  width: 25%;
+  width: 14.16%;
   height: 1.2rem;
 
   background: #e7acac;

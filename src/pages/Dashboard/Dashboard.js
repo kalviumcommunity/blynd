@@ -1,5 +1,6 @@
 import React from "react";
 import TinderCard from "react-tinder-card";
+import ReportModal from "../../components/ReportModal/ReportModal";
 
 import { useRef, useMemo, useEffect } from "react";
 import { useState } from "react";
@@ -30,7 +31,7 @@ const db = [
   {
     name: "Aakriti",
     age: 25,
-    url: "https://imgeng.jagran.com/webstories/7791/pakistani-actress-hania-amir-is-breathtaking-in-these-western-looks-1671693359.jpeg",
+    url: "https://imgs.search.brave.com/TfyaqzYE7ALed5bu_oWklJN4qK3tqClxwfIhRWM92QE/rs:fit:1100:1200:1/g:ce/aHR0cDovL3d3dy5n/b29kbW9ybmluZ2lt/YWdlc2hkZG93bmxv/YWQuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIwLzA0L0Nh/cnRvb24tSW1hZ2Vz/LTE5LmpwZw",
   },
 ];
 
@@ -59,7 +60,6 @@ const Dashboard = () => {
   };
 
   const outOfFrame = (name, idx) => {
-
     currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
   };
   const swipe = async (dir) => {
@@ -78,8 +78,13 @@ const Dashboard = () => {
     document.querySelector("html").classList.add("overflow-hidden");
   }, []);
 
+  const [showReportModal, setShowReportModal] = useState(false);
+
   return (
     <div className="dashboard-container">
+      {showReportModal && (
+        <ReportModal setShowReportModal={setShowReportModal} />
+      )}
       <Matches />
 
       <div className="main-section">
@@ -90,8 +95,11 @@ const Dashboard = () => {
             <p>Filters</p>
           </div>
         </div>
-
-        <div className="swipecard-container">
+        <div
+          className={`swipecard-container ${
+            !showReportModal ? "" : "swipe-hidden"
+          }`}
+        >
           {characters.map((character, index) => {
             return (
               <TinderCard
@@ -127,10 +135,19 @@ const Dashboard = () => {
         </div>
 
         <div className="report">
-          <img src="/assets/report.png" alt="" />
-          <p>Block and Report</p>
+          <span
+            onClick={() => {
+              setShowReportModal(true);
+            }}
+          >
+            <img src="/assets/report.png" alt="" />
+            <p>Block and Report</p>
+          </span>
         </div>
-        <div className="swipe-btns">
+
+        <div className={`swipe-btns ${
+            !showReportModal ? "" : "swipe-hidden"
+          }`}>
           <span className="left-swipe" onClick={() => swipe("left")}>
             <img src="/assets/cross.png" alt="" />
           </span>

@@ -50,11 +50,12 @@ html {
 }
 .filter {
   display: flex;
-  width: 100%;
+  width: 60rem;
   justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
-  padding-left: 26rem;
+  /* padding-left: 26rem; */
+  padding: 0 2rem;
 }
 .filter img {
   width: 1.6rem;
@@ -139,23 +140,31 @@ html {
   justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
-  width: 100%;
-  padding-left: 25rem;
+  width: 60rem;
+  padding: 0 2rem;
+  /* padding-left: 20rem; */
 }
-.report p {
+.report span p {
   font-style: normal;
   font-weight: 500;
   font-size: 1rem;
   line-height: 100%;
   color: #97aa95;
 }
-.report img {
+.report span img {
   width: 1.2rem;
   height: 1.2rem;
 }
+.report span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
 .swipe-btns {
-  position: fixed;
-  bottom: 9.3rem;
+  position: relative;
+  bottom: 7rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,4 +218,7 @@ html {
   justify-content: center;
   align-items: center;
   height: 50rem;
+}
+.swipe-hidden{
+  visibility: hidden;
 }

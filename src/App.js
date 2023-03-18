@@ -8,8 +8,9 @@ import NamePage from "./pages/NamePage/NamePage";
 import GenderPage from "./pages/GenderPage/GenderPage";
 import Interest from "./pages/InterestPage/Interest";
 import UploadPicture from "./pages/UploadPictures/UploadPicture";
-import SuccessModal from "./components/SuccessModal/SuccessModal";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import MoreInfoPage from "./pages/MoreInfoPage/MoreInfoPage";
+import SelectInterest from "./pages/SelectInterest/SelectInterest";
 
 function App() {
   return (
@@ -21,8 +22,10 @@ function App() {
         <Route path="/name" element={<NamePage />} />
         <Route path="/gender" element={<GenderPage />} />
         <Route path="/interest" element={<Interest />} />
-        <Route path="/uploadpictures" element={<UploadPicture />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/more-info" element={<MoreInfoPage />} />
+        <Route path="/select-interest" element={<SelectInterest />} />
+        <Route path="/upload-pictures" element={<UploadPicture />} />
+        <Route path="/dashboard/matches" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );

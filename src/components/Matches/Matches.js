@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState} from 'react';
+import Dates from '../Dates/Dates';
+import SwipeMatches from '../SwipeMatches/SwipeMatches';
 import './MatchesStyle.css';
 
 const Matches = () => {
+  const [activeButton, setActiveButton] = useState("matches");
+
+  const handleClick = (buttonNumber) => {
+    setActiveButton(buttonNumber);
+  };
   return (
     <div className="dashboard-side-section">
         <div className="info-row">
@@ -11,18 +18,16 @@ const Matches = () => {
             <h2>Tanishq</h2>
         </div>
         <div className="date-match-switch">
-            <div className="dates">
+            <div onClick={() => handleClick("dates")} disabled={activeButton === "dates"} className={ `${activeButton === "dates" ? "matches" : "dates"}`}>
             Dates
             </div>
-            <div className="matches">
+            <div onClick={() => handleClick("matches")} disabled={activeButton === "matches"} className={ `${activeButton === "matches" ? "matches" : "dates"}`}>
           Matches
             </div>
         </div>
-        <div className="date-match-fixing">
-            <img src="/assets/nomatch-illus.svg" alt="" />
-            <h3>Find your matches here</h3>
-            <p>Start discovering people to get matches</p>
-        </div>
+        
+        {activeButton === "dates" && <Dates/>}
+        {activeButton === "matches" && <SwipeMatches/>}
     </div>
   )
 }

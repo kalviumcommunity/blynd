@@ -1,16 +1,29 @@
 import React from "react";
-import { styled, TextField } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
+
+import { useFormik} from 'formik';
+import { signUpSchema } from '../../schemas';
+
+const initialValues = {
+  email: "",
+  password: "",
+  confirmPassword: ""
+}
+
 
 const Login = () => {
   const navigate = useNavigate();
-
-  const InputField = styled(TextField)({
-    "& label.Mui-focused": {
-      color: "#E7ACAC",
-    },
-  });
-
+  const {values, errors, touched, handleBlur, handleChange, handleSubmit} =  useFormik({
+    initialValues:initialValues,
+    validationSchema: signUpSchema,
+    onSubmit: (values, action)=>{
+      console.log(values)
+      action.resetForm();    
+      navigate('/name');
+    }
+  })
+  console.log(errors)
+  
   return (
     <>
       <div className="signup-page">
@@ -19,7 +32,7 @@ const Login = () => {
             <img src="/assets/Back.png" alt="" />
           </div>
           <h1>Welcome to our blind dating website! </h1>
-          <img src="/assets/signup-illus.svg" alt="" />
+          <img className='signup-illus' src="/assets/login-illus1.jpg" alt="" />
           <p>
             Welcome to our blind dating website! Join now to discover new
             connections and potentially find love.
@@ -34,22 +47,54 @@ const Login = () => {
           </button>
           <p id="or">- OR -</p>
 
-          <div className="signup-input-container">
-            <InputField id="standard-basic" label="Email" variant="standard" />
-            <InputField
-              id="standard-basic"
-              label="Password"
-              variant="standard"
-            />
-          </div>
-          <button className="signup-btn" onClick={() => navigate("/name")}>
-            Login
-          </button>
+          <form onSubmit={handleSubmit} className="signup-input-container">
+
+
+            
+<div className='input-container'>
+<input
+  type="email"
+  name='email'
+  required={true}
+  className="input-field"
+  placeholder='Email'
+  value={values.email} 
+  onChange={handleChange}
+  onBlur={handleBlur}
+
+/>
+{errors.email && touched.email ? (<p>{errors.email}</p>) : null }
+</div>
+
+<div className='input-container'>
+
+<input
+  type="password"
+  name='password'
+  className="input-field"
+  required={true}
+  placeholder='Password'
+  value={values.password} 
+  onChange={handleChange}
+  onBlur={handleBlur}
+/>
+{errors.password && touched.password ? (<p>{errors.password}</p>) : null }
+</div>
+
+<div className='input-container'>
+
+{errors.confirmPassword && touched.confirmPassword ? (<p>{errors.confirmPassword}</p>) : null }
+</div>
+
+
+<input type='submit' placeholder='Signup' className='signup-btn' />
+
+</form>
           <div className="login-text">
             <p>Don't have an account?</p>
-            <a href="" onClick={() => navigate("/Signup")}>
+            <span onClick={() => navigate("/Signup")}>
               Signup
-            </a>
+            </span>
           </div>
         </div>
       </div>

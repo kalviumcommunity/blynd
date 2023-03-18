@@ -16,7 +16,7 @@ const SuccessModal = () => {
           <button
             className="home-btn"
             onClick={() => {
-              navigate("/dashboard");
+              navigate("/dashboard/matches");
             }}
           >
             Go to Home

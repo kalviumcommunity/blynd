@@ -1,24 +1,18 @@
 import React, { useState } from "react";
-import { TextField } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
+import './Interest.css'
 
 const Interest = () => {
   const navigate = useNavigate();
-  const [gender, setGender] = useState("");
-  const isFormValid = gender;
+  const [interest, setInterest] = useState("");
+  const isFormValid = interest;
 
-  const handelSelect = (event) => {
-    setGender(event.target.value);
-  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Submitting form:", { gender });
-  };
+
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+    
         <div className="container-namePage">
           <div
             className="row1"
@@ -34,9 +28,9 @@ const Interest = () => {
           <div className="gender-input-container">
             <div
               className={`male-cont ${
-                gender === "male" ? "male-selected" : ""
+                interest === "male" ? "male-selected" : ""
               }`}
-              onClick={() => setGender("male")}
+              onClick={() => setInterest("male")}
             >
               <div className="select">
                 <img src="/assets/select.svg" alt="" />
@@ -51,9 +45,9 @@ const Interest = () => {
 
             <div
               className={`female-cont ${
-                gender === "female" ? "female-selected" : ""
+                interest === "female" ? "female-selected" : ""
               }`}
-              onClick={() => setGender("female")}
+              onClick={() => setInterest("female")}
             >
               <div className="select">
                 <img src="/assets/select.svg" alt="" />
@@ -74,7 +68,7 @@ const Interest = () => {
               type="submit"
               disabled={!isFormValid}
               onClick={() => {
-                navigate("/uploadpictures");
+                navigate("/more-info");
               }}
             >
               <div>
@@ -85,14 +79,14 @@ const Interest = () => {
           <div className="progress-tracker">
             <p className="progress-number">
               <span className="process-number">3</span>
-              <span className="total-number">/4</span>
+              <span className="total-number">/6</span>
             </p>
             <div className="progress-bar">
               <div className="progress-interest"></div>
             </div>
           </div>
         </div>
-      </form>
+     
     </>
   );
 };

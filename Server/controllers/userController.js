@@ -1,13 +1,32 @@
-// const User = require('../models/userModal')
+const User = require("../models/userModal");
+const jwt = require("jsonwebtoken");
 
-// // login user
-// const loginUser = async(req, res)=>{
-//     res.json({mssg: 'login user'})
-// }
+const createToken = (_id) => {
+  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "3d" });
+};
 
-// // signup user
-// const signupUser = async(req, res)=>{
-//     res.json({mssg: 'signup user'})
-// }
+// login user
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const Token = createToken(user._id);
+    const user = await User.signup(email, password);
+    res.status(200).json({ email, Token });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-// module.exports = { signupUser, loginUser}
+// signup user
+const signupUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const Token = createToken(user._id);
+    const user = await User.signup(email, password);
+    res.status(200).json({ email, Token });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { signupUser, loginUser };

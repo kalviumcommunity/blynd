@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { signUpSchema } from "../../schemas";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 const initialValues = {
   email: "",

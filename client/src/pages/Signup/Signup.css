@@ -120,6 +120,8 @@ html {
 .login-text p {
   font-size: 1rem;
   margin-bottom: 0;
+  font-weight: 500;
+  color: black;
 }
 
 .login-text span {

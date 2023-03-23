@@ -16,8 +16,8 @@ const MoreInfoPage = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    handleUserInput({ day, month, year, height, aboutme });
     navigate("/more-info");
+    // handleUserInput({ day, month, year, height, aboutme });
   };
   
   return (
@@ -26,7 +26,7 @@ const MoreInfoPage = () => {
         <div
           className="row1"
           onClick={() => {
-            navigate("/select-interest");
+            navigate("/interest");
           }}
         >
           <img src="/assets/Back.png" alt="" />
@@ -89,7 +89,9 @@ const MoreInfoPage = () => {
           <button
             type="submit"
             disabled={!isFormValid}
-            onClick={handleNext}
+            onClick={()=>{
+              navigate("/select-interest")
+            }}
           >
             <div>
               <img src="/assets/right-arrow.png" alt="" />

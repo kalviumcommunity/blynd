@@ -139,7 +139,7 @@ const UploadPicture = () => {
       <div className="container-namePage">
         {showModal && <SuccessModal />}
 
-        <div className="row1" onClick={() => navigate("/interest ")}>
+        <div className="row1" onClick={() => navigate("/select-interest ")}>
           <img src="/assets/Back.png" alt="" />
         </div>
 

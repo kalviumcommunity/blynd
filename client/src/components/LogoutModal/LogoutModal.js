@@ -1,10 +1,13 @@
 import React from "react";
 import { BiLogOut } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { useLogout } from "../../hooks/useLogout";
 import "./LogoutModal.css";
 
 const LogoutModal = (props) => {
-    const navigate = useNavigate();
+  const { logout } = useLogout();
+
+  const navigate = useNavigate();
   return (
     <div className="modal-wrapper">
       <div className="logout-modal-cont">
@@ -16,9 +19,15 @@ const LogoutModal = (props) => {
           Are you sure you want to logout? We'll miss you! But we understand if
           you need to go.
         </p>
-        <button className="yes-logout" onClick={()=>{
-            navigate('/')
-        }}>Yes, I want to logout</button>
+        <button
+          className="yes-logout"
+          onClick={() => {
+            logout();
+            navigate("/");
+          }}
+        >
+          Yes, I want to logout
+        </button>
         <button
           className="no-login"
           onClick={() => {

@@ -1,35 +1,29 @@
 import React from "react";
-import { useFormik } from "formik";
-import { signUpSchema } from "../../schemas";
+import { useState } from "react";
+import { useSignup } from "../../hooks/useSignup";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
-
-const initialValues = {
-  email: "",
-  password: "",
-  confirmPassword: "",
-};
 
 const Signup = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const { signup, error, isLoading } = useSignup();
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: initialValues,
-      validationSchema: signUpSchema,
-      onSubmit: async (values, action, email, password) => {
-        // const response = await axios.post("http://localhost:8005/signup", {
-        //   email,
-        //   password,
-        // });
-        // const success = response.status === 201;
-        // if (success) {
-        // }
-        // action.resetForm();
-        navigate("/name");
-      },
-    });
+  const googleAuth = () => {
+    window.open(
+      `${process.env.REACT_APP_API_URL}/auth/google/callback`,
+      "_self"
+    );
+  };
+
+  const handelClick = async (e) => {
+    e.preventDefault();
+    await signup(email, password);
+  };
+  const passwordError =
+    password === confirmPassword ? "" : "Password must match";
 
   return (
     <>
@@ -53,13 +47,13 @@ const Signup = () => {
         <div className="signup-form-section">
           <h1>Create Account</h1>
 
-          <button className="cwg">
+          <button className="cwg" onClick={googleAuth}>
             <img src="/assets/google.svg" alt="" />
             <p>Continue with Google</p>
           </button>
           <p id="or">- OR -</p>
 
-          <form onSubmit={handleSubmit} className="signup-input-container">
+          <form onSubmit={handelClick} className="signup-input-container">
             <div className="input-container">
               <input
                 type="email"
@@ -67,11 +61,12 @@ const Signup = () => {
                 required={true}
                 className="input-field"
                 placeholder="Email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
-              {errors.email && touched.email ? <p>{errors.email}</p> : null}
+              {/* {errors.email && touched.email ? <p>{errors.email}</p> : null} */}
             </div>
 
             <div className="input-container">
@@ -81,13 +76,14 @@ const Signup = () => {
                 className="input-field"
                 required={true}
                 placeholder="Password"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
-              {errors.password && touched.password ? (
+              {/* {errors.password && touched.password ? (
                 <p>{errors.password}</p>
-              ) : null}
+              ) : null} */}
             </div>
 
             <div className="input-container">
@@ -97,21 +93,27 @@ const Signup = () => {
                 name="confirmPassword"
                 className="input-field"
                 placeholder="Confirm Password"
-                value={values.confirmPassword}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                }}
               />
-              {errors.confirmPassword && touched.confirmPassword ? (
-                <p>{errors.confirmPassword}</p>
-              ) : null}
+
+              {passwordError ? <p>{passwordError}</p> : null}
             </div>
 
-            <input type="submit" placeholder="Signup" className="signup-btn" />
+            <input
+              type="submit"
+              placeholder="Signup"
+              disabled={isLoading && !passwordError}
+              className="signup-btn"
+            />
           </form>
           <div className="login-text">
             <p>Already have an account?</p>
             <span onClick={() => navigate("/Login")}>Signin</span>
           </div>
+          {error && <div className="error">{error}</div>}
         </div>
       </div>
     </>

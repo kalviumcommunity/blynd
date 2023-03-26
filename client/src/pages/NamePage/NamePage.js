@@ -8,8 +8,10 @@ const NamePage = () => {
   const [name, setName] = useState("");
   const isFormValid = name;
   const { handleUserInput } = useContext(MyContext);
+  
 
   const handleNext = () => {
+    localStorage.setItem('name', name);
     handleUserInput({ name });
     navigate("/gender");
   };

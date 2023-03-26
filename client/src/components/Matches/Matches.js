@@ -7,6 +7,8 @@ import './MatchesStyle.css';
 const Matches = () => {
   const navigate = useNavigate()
   const [activeButton, setActiveButton] = useState("matches");
+  const name = localStorage.getItem('name');
+
 
   const handleClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
@@ -17,9 +19,9 @@ const Matches = () => {
             <span onClick={() => {
           navigate("/profile/editprofile");
         }}>
-                <img src="/assets/tanishq pic.jpg" alt="" />
+                <img src="/assets/tanishqpic.jpg" alt="" />
             </span>
-            <h2>Tanishq</h2>
+            <h2>{name}</h2>
         </div>
         <div className="date-match-switch">
             <div onClick={() => handleClick("dates")} disabled={activeButton === "dates"} className={ `${activeButton === "dates" ? "matches" : "dates"}`}>

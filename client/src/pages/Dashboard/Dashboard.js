@@ -48,16 +48,7 @@ const Dashboard = () => {
         .map((i) => React.createRef()),
     []
   );
-  // useEffect(() => {
-  //   const fetchProfiles = async () => {
-  //     const response = await fetch("/api/profiles");
-  //     const json = await response.json();
-  //     if (response.ok) {
-  //       setProfiles(json)
-  //     }
-  //   };
-  //   fetchProfiles()
-  // }, []);
+
   const updateCurrentIndex = (val) => {
     setCurrentIndex(val);
     currentIndexRef.current = val;
@@ -100,7 +91,7 @@ const Dashboard = () => {
 
       <div className="main-section">
         <div className="logo-filter">
-          <img src="/assets/image 5.png" alt="" />
+          <img src="/assets/image5.png" alt="" />
           <div className="filter">
             <img src="/assets/filter.png" alt="" />
             <p>Filters</p>
@@ -133,7 +124,7 @@ const Dashboard = () => {
                         </h3>
 
                         <div className="verify">
-                          <img src="/assets/image 15.png" alt="" />
+                          <img src="/assets/image15.png" alt="" />
                           <p>Photo verified</p>
                         </div>
                       </div>

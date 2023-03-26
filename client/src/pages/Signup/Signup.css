@@ -138,10 +138,8 @@ html {
 }
 
 .signup-btn {
-  width: 51.3rem;
   height: 5.7rem;
   background: #FF7676;
-  border-radius: .5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -200,4 +198,17 @@ html {
   color: red;
   font-size: 1rem;
   padding: 0.5rem;
+}
+.error{
+  height: 2.5rem;
+  width: 40.0rem;
+  display: flex;
+  background-color: #f8e8e6;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+  color: red;
+  border-radius: .5rem;
+  border: 1px solid #FF7676;
+  font-size: 1rem;
 }

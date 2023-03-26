@@ -38,7 +38,7 @@
 }
 .forward-btn {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
 }
@@ -118,7 +118,7 @@
 .select {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   padding: 0 1rem;
   visibility: hidden;

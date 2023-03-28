@@ -16,7 +16,7 @@ const Hero = () => {
         <img id='hero-image' src="/assets/hero-image-new.png" alt="" />
     </div>
     <div className="hero-text">
-        <img src="/assets/image 3.png" alt="" />
+        <img src="/assets/image3.png" alt="" />
         <p id='p1'>- “The Dating Website that's all about Real Connections”</p>
         <p id='p2'>Experience the excitement of meeting someone new through blynd dates.</p>
         <button id='get-started' onClick={navigateSignup}>Get Started</button>

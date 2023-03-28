@@ -28,6 +28,7 @@ const SettingsSideSection = () => {
         break;
       case "logout":
         setOpenModal(true);
+        
         break;
       default:
         break;
@@ -58,7 +59,7 @@ const SettingsSideSection = () => {
             navigate("/dashboard/matches");
           }}
         >
-          <img src="/assets/tanishq pic.jpg" alt="" />
+          <img src="/assets/tanishqpic.jpg" alt="" />
         </span>
       </div>
 

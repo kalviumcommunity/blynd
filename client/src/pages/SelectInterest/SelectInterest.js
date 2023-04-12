@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
   FcMusic,
   FcSportsMode,
@@ -11,18 +11,19 @@ import { FaGamepad, FaPlaceOfWorship } from "react-icons/fa";
 import { GiBandana, GiCook, GiDress } from "react-icons/gi";
 import { TbDog } from "react-icons/tb";
 import { SiYourtraveldottv } from "react-icons/si";
-import { MyContext } from "../../context/MyContextProvider";
 import { BsMusicNoteList } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import "./SelectInterest.css";
 
 const SelectInterest = () => {
   const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const [selectedInterests, setSelectedInterests] = useState([]);
-  const { handleUserInput } = useContext(MyContext);
   const handleNext = () => {
-    handleUserInput({ selectedInterests });
+    setCookie("personal_interests", selectedInterests);
+
     navigate("/upload-pictures");
   };
 
@@ -41,7 +42,7 @@ const SelectInterest = () => {
       <div
         className="row1"
         onClick={() => {
-          navigate("/gender");
+          navigate("/more-info");
         }}
       >
         <img src="/assets/Back.png" alt="" />

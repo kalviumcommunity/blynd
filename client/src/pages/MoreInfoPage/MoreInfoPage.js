@@ -1,12 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MyContext } from "../../context/MyContextProvider";
-
+import {useCookies} from "react-cookie";
 import "./MoreInfoPage.css";
 
 
 const MoreInfoPage = () => {
-  const { handleUserInput } = useContext(MyContext);
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setyear] = useState("");
@@ -14,10 +12,16 @@ const MoreInfoPage = () => {
   const [aboutme, setAboutme] = useState("");
   const isFormValid = day && month && year && height && aboutme;
   const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
 
   const handleNext = () => {
-    navigate("/more-info");
-    // handleUserInput({ day, month, year, height, aboutme });
+    setCookie("dob_day", day)
+    setCookie("dob_month", month)
+    setCookie("height", height)
+    setCookie("about", aboutme)
+
+    navigate("/select-interest");
   };
   
   return (
@@ -89,9 +93,7 @@ const MoreInfoPage = () => {
           <button
             type="submit"
             disabled={!isFormValid}
-            onClick={()=>{
-              navigate("/select-interest")
-            }}
+            onClick={handleNext}
           >
             <div>
               <img src="/assets/right-arrow.png" alt="" />

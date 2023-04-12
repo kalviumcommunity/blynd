@@ -1,18 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./NamePage.css";
 import { useNavigate } from "react-router-dom";
-import { MyContext } from '../../context/MyContextProvider';
+import {useCookies} from "react-cookie";
+import {navigateToHomePage} from "../../utils/routing";
 
 const NamePage = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const isFormValid = name;
-  const { handleUserInput } = useContext(MyContext);
-  
-
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  useEffect(() => {
+    navigateToHomePage(navigate, cookies)
+  }, []);
   const handleNext = () => {
-    localStorage.setItem('name', name);
-    handleUserInput({ name });
+    setCookie("name", name)
     navigate("/gender");
   };
 

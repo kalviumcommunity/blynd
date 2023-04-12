@@ -28,11 +28,9 @@ export const useSignup = () => {
     if (response.ok) {
       // save the user to local storage
       const localUser = JSON.stringify(user);
-      localStorage.setItem("user", localUser);
 
       console.log(user)
-      setCookie("UserId", user.UserId);
-      setCookie("AuthToken", user.token);
+      setCookie("user", localUser);
 
       // update the auth context
 

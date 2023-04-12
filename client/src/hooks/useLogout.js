@@ -1,15 +1,21 @@
-import { useAuthContext } from "./useAuthContext"
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
-export const useLogout = ()=>{
-    const {dispatch} = useAuthContext()
-    const logout = () =>{
-        //remove user from storage
-        localStorage.removeItem('user')
-        // localStorage.removeItem('name')
+export const useLogout = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const navigate = useNavigate();
 
-        //dispatch logout action
-        dispatch({type: 'LOGOUT'})
-    }
+  const logout = () => {
+    //remove user from storage
+    console.log(cookies.UserId);
+    removeCookie("UserId", cookies.UserId);
+    removeCookie("AuthToken", cookies.AuthToken);
+    removeCookie("user", cookies.user);
 
-    return {logout}
-}
+
+    navigate("/");
+    window.location.reload();
+  };
+
+  return { logout };
+};

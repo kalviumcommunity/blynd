@@ -1,17 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import "./GenderPage.css";
 import { useNavigate } from "react-router-dom";
-import { MyContext } from '../../context/MyContextProvider';
+import {useCookies} from "react-cookie";
+
 
 
 const GenderPage = () => {
   const navigate = useNavigate();
   const [gender, setGender] = useState("");
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
   const isFormValid = gender;
-  const { handleUserInput } = useContext(MyContext);
 
   const handleNext = () => {
-    handleUserInput({ gender });
+    setCookie("gender_identity", gender)
+    
+
     navigate("/interest");
   };
 

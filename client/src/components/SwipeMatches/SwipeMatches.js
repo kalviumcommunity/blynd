@@ -3,6 +3,7 @@ import "./SwipeMatches.css";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
+
 const SwipeMatches = ({ matches }) => {
   const [matchedProfiles, setMatchedProfiles] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(null);
@@ -11,7 +12,7 @@ const SwipeMatches = ({ matches }) => {
   const UserId = cookies.UserId;
   const getMatches = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/users", {
+      const response = await axios.get(process.env.REACT_APP_API_URL, {
         params: { userIds: JSON.stringify(matchedUserIds) },
       });
       setMatchedProfiles(response.data);

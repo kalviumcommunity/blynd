@@ -65,7 +65,8 @@ export const useLogin = () => {
 
       // save the user to local storage
       const localUser = JSON.stringify({ name, email, UserId });
-      localStorage.setItem("user", localUser);
+      sessionStorage.setItem("user", localUser);
+
 
       // set cookies
       setCookie("UserId", UserId);

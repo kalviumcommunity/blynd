@@ -49,7 +49,7 @@ export const useLogin = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("/api/user/login", {
+    const response = await fetch(process.env.REACT_APP_API_URL+"/api/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -65,11 +65,11 @@ export const useLogin = () => {
 
       // save the user to local storage
       const localUser = JSON.stringify({ name, email, UserId });
+      localStorage.setItem("user", localUser);
 
       // set cookies
       setCookie("UserId", UserId);
       setCookie("AuthToken", token);
-      setCookie("user", localUser);
 
 
       // update loading state

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
-import {useCookies} from "react-cookie";
+
 import "./MoreInfoPage.css";
+import { navigateToHomePage} from "../../utils/routing";
+import {useCookies} from "react-cookie";
 
 
 const MoreInfoPage = () => {
@@ -13,17 +15,20 @@ const MoreInfoPage = () => {
   const isFormValid = day && month && year && height && aboutme;
   const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-
+  useEffect(() => {
+    navigateToHomePage(navigate, cookies)
+  }, []);
 
   const handleNext = () => {
-    setCookie("dob_day", day)
-    setCookie("dob_month", month)
-    setCookie("height", height)
-    setCookie("about", aboutme)
+    sessionStorage.setItem("dob_day", day);
+    sessionStorage.setItem("dob_month", month);
+    sessionStorage.setItem("dob_year", year);
+    sessionStorage.setItem("height", height);
+    sessionStorage.setItem("about", aboutme);
 
     navigate("/select-interest");
   };
-  
+
   return (
     <>
       <div className="container-namePage">

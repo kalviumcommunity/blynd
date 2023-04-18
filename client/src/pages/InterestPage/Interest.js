@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Interest.css";
-import {useCookies} from "react-cookie";
-
+import { navigateToHomePage } from "../../utils/routing";
+import { useCookies } from "react-cookie";
 
 const Interest = () => {
   const navigate = useNavigate();
   const [interest, setInterest] = useState("");
   const isFormValid = interest;
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-
+  useEffect(() => {
+    navigateToHomePage(navigate, cookies);
+  }, []);
 
   const handleNext = () => {
-    setCookie("gender_interest", interest)
-
-
+    sessionStorage.setItem("gender_interest", interest);
     navigate("/more-info");
   };
 

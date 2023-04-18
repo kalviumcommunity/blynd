@@ -38,7 +38,7 @@ const Signup = () => {
     /* global google */
     google.accounts.id.initialize({
       client_id:
-        "786188419159-ldtllegicson9td6oso3nb54nuk8lakb.apps.googleusercontent.com",
+        process.env.client_id,
       callback: handleCallbackResponse,
     });
 

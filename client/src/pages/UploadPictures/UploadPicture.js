@@ -1,28 +1,54 @@
-import React, { useRef, useState } from "react";
-// import { v2 as cloudinary } from 'cloudinary-core';
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { MyContext } from "../../context/MyContextProvider";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 
 import "./UploadPicture.css";
 import SuccessModal from "../../components/SuccessModal/SuccessModal";
-
-// const cloudinaryCore = new cloudinary.Cloudinary({ cloud_name: 'YOUR_CLOUD_NAME' });
+import {navigateToHomePage} from "../../utils/routing";
 
 const UploadPicture = () => {
-  // const { userInput } = useContext(MyContext);
   const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
   const [pictures, setPictures] = useState([]);
   const [pictures2, setPictures2] = useState([]);
   const [pictures3, setPictures3] = useState([]);
   const [pictures4, setPictures4] = useState([]);
   const [pictures5, setPictures5] = useState([]);
   const [pictures6, setPictures6] = useState([]);
+
   const fileInputRef = useRef();
   const fileInputRef2 = useRef();
   const fileInputRef3 = useRef();
   const fileInputRef4 = useRef();
   const fileInputRef5 = useRef();
   const fileInputRef6 = useRef();
+
+  useEffect(() => {
+    navigateToHomePage(navigate, cookies)
+  }, []);
+
+  const submitImage = async (pictures, setPictures, imageIndex) => {
+    const data = new FormData();
+    data.append("file", pictures);
+    data.append("upload_preset", "user_images");
+    data.append("cloud_name", "dtwaas6rv");
+
+    await fetch("https://api.cloudinary.com/v1_1/dtwaas6rv/image/upload", {
+      method: "POST",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data.url);
+        sessionStorage.setItem(`url${imageIndex}`, data.url);
+        setPictures([data.url]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleSelect = (event) => {
     const file = event.target.files[0];
@@ -32,25 +58,6 @@ const UploadPicture = () => {
     };
     reader.readAsDataURL(file);
   };
-
-  // const handleSelect = async (event) => {
-  //   const file = event.target.files[0];
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-  //   formData.append('upload_preset', 'YOUR_UPLOAD_PRESET');
-
-  //   const response = await fetch(
-  //     `https://api.cloudinary.com/v1_1/dtwaas6rv/image/upload`,
-  //     {
-  //       method: 'POST',
-  //       body: formData,
-  //     }
-  //   );
-
-  //   const data = await response.json();
-  //   setPictures(cloudinaryCore.url(data.public_id));
-  // };
-
 
   const handleSelect2 = (event) => {
     const file2 = event.target.files[0];
@@ -93,46 +100,104 @@ const UploadPicture = () => {
     reader.readAsDataURL(file6);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Submitting form:", { pictures });
+  const handelSubmit = async (e) => {
+    e.preventDefault();
+
+    await submitImage(pictures, setPictures, 1);
+    await submitImage(pictures2, setPictures2, 2);
+    await submitImage(pictures3, setPictures3, 3);
+    await submitImage(pictures4, setPictures4, 4);
+    await submitImage(pictures5, setPictures5, 5);
+    await submitImage(pictures6, setPictures6, 6);
+
+      try {
+        console.log(JSON.parse(sessionStorage.getItem("user")).UserId)
+
+          await axios.put(process.env.REACT_APP_API_URL + "/user", {
+            UserId: JSON.parse(sessionStorage.getItem("user")).UserId,
+            first_name: sessionStorage.getItem("name"),
+            dob_day: sessionStorage.getItem("dob_day"),
+            dob_month: sessionStorage.getItem("dob_month"),
+            dob_year: sessionStorage.getItem("dob_year"),
+            gender_identity: sessionStorage.getItem("gender_identity"),
+            gender_interest: sessionStorage.getItem("gender_interest"),
+            url1: sessionStorage.getItem("url1"),
+            url2: sessionStorage.getItem("url2"),
+            url3: sessionStorage.getItem("url3"),
+            url4: sessionStorage.getItem("url4"),
+            url5: sessionStorage.getItem("url5"),
+            url6: sessionStorage.getItem("url6"),
+            about: sessionStorage.getItem("about"),
+            matches: [],
+            height: sessionStorage.getItem("height"),
+            interests: sessionStorage.getItem("personal_interests"),
+          })
+          setShowModal(true);
+          const user = JSON.parse(sessionStorage.getItem('user'))
+          setCookie("UserId", user.UserId);
+          setCookie("AuthToken", user.token);
+      } catch (err) {
+        console.log(err);
+      }
+
   };
 
-  const isFormValid = pictures.length > 0 ? true : false;
-  const isFormValid2 = pictures2.length > 0 ? true : false;
-  const isFormValid3 = pictures3.length > 0 ? true : false;
-  const isFormValid4 = pictures4.length > 0 ? true : false;
-  const isFormValid5 = pictures5.length > 0 ? true : false;
-  const isFormValid6 = pictures6.length > 0 ? true : false;
+  const isFormValid = pictures && pictures.length > 0;
+  const isFormValid2 = pictures2 && pictures2.length > 0;
+  const isFormValid3 = pictures3 && pictures3.length > 0;
+  const isFormValid4 = pictures4 && pictures4.length > 0;
+  const isFormValid5 = pictures5 && pictures5.length > 0;
+  const isFormValid6 = pictures6 && pictures6.length > 0;
 
   let countPictures = 0;
 
-  if (pictures.length > 0) {
+  if (pictures && pictures.length > 0) {
     countPictures++;
   }
 
-  if (pictures2.length > 0) {
+  if (pictures2 && pictures2.length > 0) {
     countPictures++;
   }
 
-  if (pictures3.length > 0) {
+  if (pictures3 && pictures3.length > 0) {
     countPictures++;
   }
 
-  if (pictures4.length > 0) {
+  if (pictures4 && pictures4.length > 0) {
     countPictures++;
   }
 
-  if (pictures5.length > 0) {
+  if (pictures5 && pictures5.length > 0) {
     countPictures++;
   }
-  if (pictures6.length > 0) {
+  if (pictures6 && pictures6.length > 0) {
     countPictures++;
   }
 
-  const isButtonValid = countPictures >= 3;
+  const isButtonValid = countPictures >= 0;
 
   const [showModal, setShowModal] = useState(false);
+
+  // submit and getting form data
+  const [formData, setFormData] = useState({
+    UserId: JSON.parse(sessionStorage.getItem("user")).UserId,
+    first_name: sessionStorage.getItem("name"),
+    dob_day: sessionStorage.getItem("dob_day"),
+    dob_month: sessionStorage.getItem("dob_month"),
+    dob_year: sessionStorage.getItem("dob_year"),
+    gender_identity: sessionStorage.getItem("gender_identity"),
+    gender_interest: sessionStorage.getItem("gender_interest"),
+    url1: sessionStorage.getItem("url1"),
+    url2: sessionStorage.getItem("url2"),
+    url3: sessionStorage.getItem("url3"),
+    url4: sessionStorage.getItem("url4"),
+    url5: sessionStorage.getItem("url5"),
+    url6: sessionStorage.getItem("url6"),
+    about: sessionStorage.getItem("about"),
+    matches: [],
+    height: sessionStorage.getItem("height"),
+    interests: sessionStorage.getItem("personal_interests"),
+  });
 
   return (
     <>
@@ -149,9 +214,10 @@ const UploadPicture = () => {
           <div className="col1">
             <div className="big-box">
               <div className="picture-preview-enabled">
-                {pictures.map((picture, index) => (
-                  <img key={index} src={picture} alt={`Picture ${index}`} />
-                ))}
+                {pictures?.length > 0 &&
+                  pictures?.map((picture, index) => (
+                    picture &&   <img key={index} src={picture} alt={` ${index}`} />
+                  ))}
               </div>
               <div
                 className={
@@ -180,9 +246,11 @@ const UploadPicture = () => {
             <div className="small-box-cont">
               <div className="small-box">
                 <div className="picture-preview-small">
-                  {pictures2.map((picture, index) => (
-                    <img key={index} src={picture} alt={`Picture ${index}`} />
-                  ))}
+                  {pictures2?.length > 0 &&
+                    pictures2?.map((picture, index) => (
+                    
+                      picture && <img key={index} src={picture} alt={`${index}`} />
+                    ))}
                 </div>
 
                 <div
@@ -213,9 +281,10 @@ const UploadPicture = () => {
               </div>
               <div className="small-box">
                 <div className="picture-preview-small">
-                  {pictures3.map((picture, index) => (
-                    <img key={index} src={picture} alt={`Picture ${index}`} />
-                  ))}
+                  {pictures3?.length > 0 &&
+                    pictures3?.map((picture, index) => (
+                      picture && <img key={index} src={picture} alt={`${index}`} />
+                    ))}
                 </div>
 
                 <div
@@ -250,9 +319,10 @@ const UploadPicture = () => {
           <div className="col2">
             <div className="small-box">
               <div className="picture-preview-small">
-                {pictures4.map((picture, index) => (
-                  <img key={index} src={picture} alt={`Picture ${index}`} />
-                ))}
+                {pictures4?.length > 0 &&
+                  pictures4?.map((picture, index) => (
+                    picture && <img key={index} src={picture} alt={`${index}`} />
+                  ))}
               </div>
 
               <div
@@ -283,9 +353,10 @@ const UploadPicture = () => {
             </div>
             <div className="small-box">
               <div className="picture-preview-small">
-                {pictures5.map((picture, index) => (
-                  <img key={index} src={picture} alt={`Picture ${index}`} />
-                ))}
+                {pictures5?.length > 0 &&
+                  pictures5?.map((picture, index) => (
+                    picture &&  <img key={index} src={picture} alt={`${index}`} />
+                  ))}
               </div>
 
               <div
@@ -316,9 +387,10 @@ const UploadPicture = () => {
             </div>
             <div className="small-box">
               <div className="picture-preview-small">
-                {pictures6.map((picture, index) => (
-                  <img key={index} src={picture} alt={`Picture ${index}`} />
-                ))}
+                {pictures6?.length > 0 &&
+                  pictures6?.map((picture, index) => (
+                    picture && <img key={index} src={picture} alt={`${index}`} />
+                  ))}
               </div>
 
               <div
@@ -354,9 +426,7 @@ const UploadPicture = () => {
           <button
             type="submit"
             disabled={!isButtonValid}
-            onClick={() => {
-              setShowModal(true);
-            }}
+            onClick={handelSubmit}
           >
             <div
               className={`next-btn ${isButtonValid ? "enabled" : "disabled"}`}

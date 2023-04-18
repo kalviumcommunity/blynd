@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {
   FcMusic,
   FcSportsMode,
@@ -13,17 +13,21 @@ import { TbDog } from "react-icons/tb";
 import { SiYourtraveldottv } from "react-icons/si";
 import { BsMusicNoteList } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import "./SelectInterest.css";
+import {navigateToHomePage} from "../../utils/routing";
+import {useCookies} from "react-cookie";
 
 const SelectInterest = () => {
   const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const [selectedInterests, setSelectedInterests] = useState([]);
-  const handleNext = () => {
-    setCookie("personal_interests", selectedInterests);
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+    useEffect(() => {
+        navigateToHomePage(navigate, cookies)
+    }, []);
 
+  const handleNext = () => {
+    sessionStorage.setItem("personal_interests", selectedInterests);
     navigate("/upload-pictures");
   };
 

@@ -1,20 +1,39 @@
-The dating site name is: *Blynd*
+# Blynd - A New Approach to Dating
+url: https://blynd-dating.vercel.app/
 
-Problem statement: 
-There are online dating sites but through user research I came to know a few problems about online dating which people faced,
-One was that the relationships made through online dating apps were very casual and most of them ended on chats as the users were not able to express their true personalities, 
-And there were also cases when the matches even if they plan to meet in person after chatting for days and developing trust, when they meet the other person in real life, the person tends to feel very different from their expectations, it seemed to many people as if they chatted to a completely different person. 
+## Problem Statement:
 
-So for solving these problems I came up with an idea for a new kind of dating approach, which has a suspense like blind dating, but also doesn't have the risk of you going on a date with a person who you don't want to go with.
+Online dating has become increasingly popular, but it comes with its own set of challenges. Through user research, we identified some common problems faced by users on existing dating apps. Many relationships formed online were perceived as casual, often ending in mere chats without a deeper connection. Additionally, users encountered instances where the person they met in real life differed significantly from their online persona.
 
-How blynd works:
-The user has to create an account by entering their info and uploading their picture and then select the gender they are interested in and according to that they will be shown profiles for swiping left and right.
-The user can see the photos and info in the profiles. 
-The users have to right swipe more than one profile then only they will be eligible for a match.
+To address these issues, we present Blynd—a unique dating approach that combines the suspense of blind dating with a thoughtful matching process, minimizing the risk of disappointment during in-person meetings.
 
-What happens when both users right swipe each other and there is a match?
-This is where the blynd gets interesting, when there is a match both the users won't be able to know with whom they got the match, but the match will be from the one whom they have right swiped and you can't chat with your match until you meet them,
-After there is a match the female user would be shown a list of nearby places and time for a date, from which she has to select, and then the male user will have to choose the final dating location and time from the options selected by the female user. Now the date is fixed and they can meet in person and share their true selves.
+## How Blynd Works:
 
-Business model?
-Blynd won't be charging money from the users, unlike other dating apps. Instead it will be charging listing fees from cafes and restaurants to show it in the list of nearby places for dating.
+1. **Account Creation:**
+   - Users need to create an account by entering their information and uploading a profile picture.
+   - They select the gender they are interested in.
+
+2. **Profile Swiping:**
+   - Users are presented with profiles that match their preferences.
+   - Profiles can be swiped left or right based on interest.
+
+3. **Matching Eligibility:**
+   - To be eligible for a match, users must right swipe on more than one profile.
+
+4. **Mystery Matches:**
+   - When both users right swipe each other, a match occurs.
+   - However, the users won't know with whom they matched until they meet in person.
+
+5. **Setting Up a Date:**
+   - Once there is a match, the female user is provided with a list of nearby places and available times for a date.
+   - The male user then selects the final date location and time from the options chosen by the female user.
+
+6. **Meeting in Person:**
+   - The date is fixed, and users can only start chatting after meeting in person.
+   - This approach encourages users to share their true selves, fostering more meaningful connections.
+
+## Business Model:
+
+Blynd takes a different approach from traditional dating apps. Instead of charging users, Blynd generates revenue through listing fees paid by cafes and restaurants that want to be featured in the list of nearby places for dating. This business model ensures that the app remains free for users while providing a unique and suspenseful dating experience.
+
+Join Blynd and discover a new way to connect—where true personalities shine, and every match holds the promise of genuine connection.
